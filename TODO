@@ -1,0 +1,21 @@
+Things still to do (NOT an exhaustive list ;)):
+
+* Write a program to automatically generate the <lib>.dll.c file,
+  containing the stubs.
+
+* Automate DLL_NAME to pull it from somewhere.
+
+* Automate stub re-writing somehow.
+
+* Make _binary_libname_{start, end} generic, i.e. not dll name specific.
+
+* Rewrite each stub after first call to call the function pointer
+  proper, and hence bypass the NULL test.
+
+* Think about multiple loaded assemblies, and the impact that will have
+  on loading the runtime/appdomain twice.
+  
+* Think about multi-threading, and how to invoke mono_thread_attach.
+
+Tom Spink
+<tspink@gmail.com>
