@@ -48,19 +48,26 @@ fast_path:
 	return result;
 }
 
+static int (*Fnnew_Test_TestClass)(MonoObject *this, MonoException **exception);
 static MonoClass *Test_TestClass;
 __stub void *new_Test_TestClass(void)
 {
+	MonoException *exception;
 	MonoObject *obj;
 	
 slow_path:
 	sp_ensure_runtime();
 	Test_TestClass = mono_class_from_name(m_image, "Test", "TestClass");
+	Fnnew_Test_TestClass = sp_get_method_thunk("Test.TestClass:.ctor()");
 	sp_rewrite_me(&&slow_path, &&fast_path);
 	
 fast_path:
 	obj = mono_object_new(m_domain, Test_TestClass);
-	mono_runtime_object_init(obj);
+	Fnnew_Test_TestClass(obj, &exception);
+	if (exception != NULL) {
+		mono_raise_exception(exception);
+		return NULL;
+	}
 	
 	return obj;
 }
