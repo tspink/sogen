@@ -11,9 +11,10 @@
 #include <mono/metadata/assembly.h>
 #include <mono/metadata/image.h>
 #include <mono/metadata/debug-helpers.h>
+#include "support.h"
 
-/* HACK: The name of the assembly. */
-#define DLL_NAME "test.dll"
+/* The assembly information structure. */
+extern struct assembly_info __assembly_info;
 
 /* HACK: need to make this generic, so we can provide ONE version of
  * support.o that works for all. */
@@ -47,9 +48,9 @@ void sp_ensure_runtime()
 	if (runtime_started) {
 		return;
 	}
-		
+	
 	/* Initialise the JIT. */
-	m_domain = mono_jit_init(DLL_NAME);
+	m_domain = mono_jit_init(__assembly_info.name);
 	if (!m_domain) {
 		printf("error: unable to create mono domain\n");
 		_exit(0);
@@ -66,7 +67,7 @@ void sp_ensure_runtime()
 	}
 	
 	/* Now, load the assembly. */
-	m_assembly = mono_assembly_load_from_full(m_image, DLL_NAME, NULL, 0);
+	m_assembly = mono_assembly_load_from_full(m_image, __assembly_info.name, NULL, 0);
 	if (!m_assembly) {
 		printf("error: unable to load assembly\n");
 		_exit(0);

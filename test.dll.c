@@ -10,6 +10,8 @@
 #include <mono/metadata/debug-helpers.h>
 #include "support.h"
 
+DEFINE_ASSEMBLY("test.dll");
+
 static void (*FnTest_TestClass_TestStaticMethod)(MonoException **exception);
 __stub void Test_TestClass_TestStaticMethod(void)
 {

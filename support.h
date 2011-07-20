@@ -16,4 +16,13 @@ extern MonoAssembly *m_assembly;
 extern MonoImage *m_image;
 extern MonoDomain *m_domain;
 
+struct assembly_info
+{
+	const char *name;
+};
+
+#define DEFINE_ASSEMBLY(_name) const struct assembly_info __assembly_info = { \
+		.name = _name, \
+	}
+
 #endif
