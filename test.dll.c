@@ -17,11 +17,7 @@ __stub void Test_TestClass_TestStaticMethod(void)
 	
 slow_path:
 	sp_ensure_runtime();
-	
-	if (FnTest_TestClass_TestStaticMethod == NULL) {
-		FnTest_TestClass_TestStaticMethod = sp_get_method_thunk("Test.TestClass:TestStaticMethod()");
-	}
-	
+	FnTest_TestClass_TestStaticMethod = sp_get_method_thunk("Test.TestClass:TestStaticMethod()");
 	sp_rewrite_me(&&slow_path, &&fast_path);
 	
 fast_path:
@@ -39,11 +35,7 @@ __stub int Test_TestClass_TestStaticMethod2(void)
 	
 slow_path:
 	sp_ensure_runtime();
-	
-	if (FnTest_TestClass_TestStaticMethod2 == NULL) {
-		FnTest_TestClass_TestStaticMethod2 = sp_get_method_thunk("Test.TestClass:TestStaticMethod2()");
-	}
-	
+	FnTest_TestClass_TestStaticMethod2 = sp_get_method_thunk("Test.TestClass:TestStaticMethod2()");
 	sp_rewrite_me(&&slow_path, &&fast_path);
 
 fast_path:
@@ -63,11 +55,7 @@ __stub void *new_Test_TestClass(void)
 	
 slow_path:
 	sp_ensure_runtime();
-	
-	if (Test_TestClass == NULL) {
-		Test_TestClass = mono_class_from_name(m_image, "Test", "TestClass");
-	}
-	
+	Test_TestClass = mono_class_from_name(m_image, "Test", "TestClass");
 	sp_rewrite_me(&&slow_path, &&fast_path);
 	
 fast_path:
@@ -85,15 +73,8 @@ __stub void *new_Test_TestClass2(int start)
 	
 slow_path:
 	sp_ensure_runtime();
-	
-	if (Test_TestClass == NULL) {
-		Test_TestClass = mono_class_from_name(m_image, "Test", "TestClass");
-	}
-	
-	if (Fnnew_Test_TestClass2 == NULL) {
-		Fnnew_Test_TestClass2 = sp_get_method_thunk("Test.TestClass:.ctor(int)");
-	}
-
+	Test_TestClass = mono_class_from_name(m_image, "Test", "TestClass");
+	Fnnew_Test_TestClass2 = sp_get_method_thunk("Test.TestClass:.ctor(int)");
 	sp_rewrite_me(&&slow_path, &&fast_path);
 
 fast_path:		
@@ -114,10 +95,7 @@ __stub void Test_TestClass_TestMethod(void *this)
 	
 slow_path:
 	sp_ensure_runtime();
-	
-	if (FnTest_TestClass_TestMethod == NULL) {
-		FnTest_TestClass_TestMethod = sp_get_method_thunk("Test.TestClass:TestMethod()");
-	}
+	FnTest_TestClass_TestMethod = sp_get_method_thunk("Test.TestClass:TestMethod()");
 	sp_rewrite_me(&&slow_path, &&fast_path);
 	
 fast_path:
@@ -134,10 +112,7 @@ __stub void Test_TestClass_TestMethod2(void *this, char *name)
 	
 slow_path:
 	sp_ensure_runtime();
-
-	if (FnTest_TestClass_TestMethod2 == NULL) {
-		FnTest_TestClass_TestMethod2 = sp_get_method_thunk("Test.TestClass:TestMethod2(string)");
-	}
+	FnTest_TestClass_TestMethod2 = sp_get_method_thunk("Test.TestClass:TestMethod2(string)");
 	sp_rewrite_me(&&slow_path, &&fast_path);
 	
 fast_path:
@@ -154,11 +129,7 @@ __stub void Test_TestClass_TestMethod3(void *this)
 	
 slow_path:
 	sp_ensure_runtime();
-
-	if (FnTest_TestClass_TestMethod3 == NULL) {
-		FnTest_TestClass_TestMethod3 = sp_get_method_thunk("Test.TestClass:TestMethod3()");
-	}
-	
+	FnTest_TestClass_TestMethod3 = sp_get_method_thunk("Test.TestClass:TestMethod3()");
 	sp_rewrite_me(&&slow_path, &&fast_path);
 	
 fast_path:
