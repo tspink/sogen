@@ -11,6 +11,7 @@
 
 extern void sp_ensure_runtime(void);
 extern void *sp_get_method_thunk(const char *method_name);
+extern void sp_rewrite_me(void *slow, void *fast);
 
 extern MonoAssembly *m_assembly;
 extern MonoImage *m_image;
