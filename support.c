@@ -50,7 +50,7 @@ void sp_ensure_runtime()
 	}
 	
 	/* Initialise the JIT. */
-	m_domain = mono_jit_init(__assembly_info.name);
+	m_domain = mono_jit_init_version(__assembly_info.name, __assembly_info.version);
 	if (!m_domain) {
 		printf("error: unable to create mono domain\n");
 		_exit(0);

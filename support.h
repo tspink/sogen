@@ -20,10 +20,12 @@ extern MonoDomain *m_domain;
 struct assembly_info
 {
 	const char *name;
+	const char *version;
 };
 
-#define DEFINE_ASSEMBLY(_name) const struct assembly_info __assembly_info = { \
-		.name = _name, \
+#define DEFINE_ASSEMBLY(__name, __ver) const struct assembly_info __assembly_info = { \
+		.name = __name, \
+		.version = __ver, \
 	}
 
 #endif
